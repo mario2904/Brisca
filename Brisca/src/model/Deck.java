@@ -1,8 +1,9 @@
+package model;
 import java.util.ArrayList;
 import java.util.Random;
 /**
  * This class create the deck to be used in the game
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class Deck {

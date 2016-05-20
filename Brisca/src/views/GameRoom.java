@@ -1,3 +1,4 @@
+package views;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -10,9 +11,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.Timer;
 
+import controller.ClientEngine;
+
 /**
  * This class creates the frame containing the game graphics (animations)
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class GameRoom extends JFrame{
@@ -134,7 +137,6 @@ public class GameRoom extends JFrame{
 			}
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 
 				if(!initialization){
 					engine.hasGameStarted();
@@ -156,7 +158,6 @@ public class GameRoom extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
 			new HowTo();
 		}
 	}

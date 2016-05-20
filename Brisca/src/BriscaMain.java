@@ -14,10 +14,18 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import controller.ClientEngine;
+import views.AvailableGames;
+import views.Background;
+import views.ChatPanel;
+import views.HowTo;
+import views.Preferences;
+import views.Stats;
 /**
  * This is the main class
  * Once a player has registered he can create a game, view available games, view his playing status and get help info from here
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class BriscaMain extends JFrame{
@@ -136,7 +144,6 @@ public class BriscaMain extends JFrame{
 			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 
 				this.engine.hasNewUserArrived();
 			}
@@ -154,7 +161,6 @@ public class BriscaMain extends JFrame{
 			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 
 				this.engine.hasNewMessageArrived();			
 			}
@@ -172,7 +178,6 @@ public class BriscaMain extends JFrame{
 			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 
 				this.engine.hasNewMember();			
 			}
@@ -193,7 +198,6 @@ public class BriscaMain extends JFrame{
 		 */
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
 			new Preferences(engine);
 		}
 	}	
@@ -205,8 +209,6 @@ public class BriscaMain extends JFrame{
 		 */
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			//dispose();
 			
 			new AvailableGames(engine);
 			engine.newWindowGameList();
@@ -219,7 +221,6 @@ public class BriscaMain extends JFrame{
 		 */
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
 			new HowTo();
 		}
 	}
@@ -231,7 +232,6 @@ public class BriscaMain extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
 			new Stats(engine);
 			engine.getStats();
 		}
@@ -243,8 +243,7 @@ public class BriscaMain extends JFrame{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
 		String newUser = "";
 		String password = "";
 		do {

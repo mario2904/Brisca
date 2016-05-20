@@ -1,3 +1,4 @@
+package model;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -12,7 +13,7 @@ import javax.swing.ImageIcon;
  * Will set the specific location for each one
  * Specific card image
  * And will be handle the animation of the game (draws, repaints and rotates cards)
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class CardImage extends Rectangle {

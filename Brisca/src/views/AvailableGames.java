@@ -1,3 +1,4 @@
+package views;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -13,21 +14,23 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
+import controller.ClientEngine;
+
 /**
  * This class is a frame to show the players the available games with the specified preferences
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class AvailableGames extends JFrame{
 	private Background3 MainPanel;
-	private static JList List;
+	private static JList<String> List;
 	private JScrollPane scroll;
 	private Image background;
 	private JPanel UserPanel;
 	private JPanel panel;
 	private JButton button;
 	private ClientEngine engine;
-	private static DefaultListModel listModel;
+	private static DefaultListModel<String> listModel;
 	
 
 	/**
@@ -51,8 +54,8 @@ public class AvailableGames extends JFrame{
 		MainPanel.add(UserPanel);
 		
 		UserPanel.setOpaque(false);
-		List =new JList();
-		listModel = new DefaultListModel();
+		List = new JList<String>();
+		listModel = new DefaultListModel<String>();
 	
 		List.setModel(listModel);
 		scroll = new JScrollPane(List);
@@ -67,8 +70,6 @@ public class AvailableGames extends JFrame{
 		button.addActionListener(new joinGameListener());
 		UserPanel.add(button);
 
-		
-		
 		class Listener1 implements ActionListener {
 			private ClientEngine engine;
 			Listener1(ClientEngine engine){
@@ -76,7 +77,6 @@ public class AvailableGames extends JFrame{
 			}
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 
 				try{
 					this.engine.hasNewGameCreated();
@@ -102,7 +102,7 @@ public class AvailableGames extends JFrame{
 	 * Method to clear the game list for it to be updated
 	 */
 	public static void clearGameList() {
-		listModel = new DefaultListModel();
+		listModel = new DefaultListModel<String>();
 	}
 	/**
 	 * Listener class for the button used to select the game and join it
@@ -116,7 +116,6 @@ public class AvailableGames extends JFrame{
 		 * In this case the button will select the game and join
 		 */
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			String game = (String) List.getSelectedValue();
 
 			if(game != null){

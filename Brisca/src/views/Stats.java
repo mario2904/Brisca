@@ -1,22 +1,23 @@
+package views;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import controller.ClientEngine;
+
 /**
- * This class creates the window for the created games
- * @author Michelle M Ortiz & Mario Orbegoso
+ * This class is a frame to show the players their gaming status
+ * @author Mario Orbegoso
+ *
  */
-public class CreatedGame extends JFrame{
+public class Stats extends JFrame{
 	private Background3 MainPanel;
 	private static JList List;
 	private JScrollPane scroll;
@@ -28,12 +29,12 @@ public class CreatedGame extends JFrame{
 	private static DefaultListModel listModel;
 	
 	/**
-	 * Creates the frame of the games created by the users
-	 * @param engine
+	 * Constructor that will draw the frame that will contain the stats
+	 * @param engine - connection to server (client)
 	 */
-	public CreatedGame(ClientEngine engine){
-		super("Created Game: " + engine.getUser());
-
+	public Stats(ClientEngine engine){
+		super("Stats: " + engine.getUser());
+		
 		setSize(400,280);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -53,50 +54,28 @@ public class CreatedGame extends JFrame{
 		List.setModel(listModel);
 		scroll = new JScrollPane(List);
 		UserPanel.add(scroll);
-	
 
 		scroll.setPreferredSize(new Dimension(300, 200));
 		scroll.setLocation(150, 100);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		button = new JButton("Play");
-		button.addActionListener(new joinGameListener());
-		UserPanel.add(button);
-		
 		setVisible(true);
 
 	}
 	/**
-	 * Adds new member to the list of the game members
-	 * @param member
+	 * Method to add info to the list of gaming status
+	 * @param info information to be added to the gaming status
 	 */
-	public static void addMember(String member){
-		listModel.addElement(member);
+	public static void addStats(String info){
+		listModel.addElement(info);
 		List.setModel(listModel);
-		System.out.println(member);
+		System.out.println(info);
 	}
+
 	/**
-	 * Clears the member list to be updated
+	 * Method to clear the gaming status list for it to be updated
 	 */
-	public static void clearMemberList(){
+	public static void clearStatsList(){
 		listModel = new DefaultListModel();
 	}
-	
-	public class joinGameListener implements ActionListener{
-		/**
-		 * Checks if the user that created the game is ready to start playing
-		 * Sends message to the server to start the game
-		 */
-		public void actionPerformed(ActionEvent e) {
-
-			if(listModel.size() != 4){
-				JOptionPane.showMessageDialog(null, "Need to have four players to strart your game");
-			}
-			else{			
-			dispose();
-			engine.startGame();
-			}
-		}
-	}
 }
-

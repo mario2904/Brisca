@@ -1,4 +1,8 @@
+package controller;
 import java.util.ArrayList;
+
+import model.Deck;
+import model.Player;
 /**
  * This class creates the game logic 
  * @author Michelle M Ortiz & Mario Orbegoso

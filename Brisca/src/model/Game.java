@@ -1,9 +1,12 @@
+package model;
 import java.util.ArrayList;
+
+import controller.GameManager;
 
 /**
  * This class receives the four players, the game manager 
  * and stores them until it's time to start the game
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class Game {

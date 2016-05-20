@@ -1,3 +1,4 @@
+package views;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -10,9 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+
+import controller.ClientEngine;
 /**
  * This class opens a new window for selecting the type of game the user wants to create
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  */
 public class Preferences extends JFrame{
 

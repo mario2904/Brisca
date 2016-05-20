@@ -1,3 +1,4 @@
+package views;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -16,10 +17,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import controller.ClientEngine;
+import model.CardImage;
+
 /**
  * This class receives the image for the backgound
  * Handles the animations of the cards
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class Background2 extends JPanel {

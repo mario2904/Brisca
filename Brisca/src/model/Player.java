@@ -1,8 +1,9 @@
+package model;
 import java.util.ArrayList;
 
 /**
  * This class manages the player and its game status
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class Player {

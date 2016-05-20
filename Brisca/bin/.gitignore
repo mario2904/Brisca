@@ -58,3 +58,6 @@
 /SocketServer$ServerThread.class
 /SocketServer.class
 /Stats.class
+/views/
+/model/
+/controller/

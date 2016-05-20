@@ -1,3 +1,4 @@
+package views;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -8,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;;
 /**
  * This class creates a window with the instructions of the game
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class HowTo extends JFrame {

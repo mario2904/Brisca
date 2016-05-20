@@ -1,7 +1,8 @@
+package model;
 /**
  * This class will create the cards to be used in the game
  * Will assign the images accordingly, rank and suit
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class Card {

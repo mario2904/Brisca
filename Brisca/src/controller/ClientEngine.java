@@ -1,3 +1,5 @@
+package controller;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,11 +7,17 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import views.AvailableGames;
+import views.ChatPanel;
+import views.CreatedGame;
+import views.GameRoom;
+import views.Stats;
+
 /**
  * This class is the Client Engine
  * Connects the user to the server 
- * Makes remote playin possible
- * @author Michelle M Ortiz & Mario Orbegoso
+ * Makes remote playing possible
+ * @author Mario Orbegoso
  *
  */
 public class ClientEngine {
@@ -17,7 +25,6 @@ public class ClientEngine {
 	private String newMessage, newUser, newGame, newMember, newCard, newCardsChosen, newCurrentRoundInfo, winnerOfGame, gameStarted, localUser, currentGame, localPassword, localGame;
 	private final String server = "localhost";
 	private final int port = 8290;
-	
 	
 	private Socket clientSocket;
 	private PrintWriter out;
