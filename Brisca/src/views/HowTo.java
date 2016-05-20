@@ -22,8 +22,7 @@ public class HowTo extends JFrame {
 		
 			super("How to");
 			setSize(600, 700);
-			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-			setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+			setLocationRelativeTo(null); 						// Set Location to Center of Screen
 			pane =new JTextArea("\n Rules of the Game\n"+"\r\n Each Player has 3 cards\n"+
 			"\r\n On every turn each player will play one card\n"+
 			"\r\n The player that plays the highest trump card will win the hand\n"+

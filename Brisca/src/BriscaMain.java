@@ -1,9 +1,7 @@
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -17,9 +15,9 @@ import javax.swing.Timer;
 
 import controller.ClientEngine;
 import views.AvailableGames;
-import views.Background;
 import views.ChatPanel;
 import views.HowTo;
+import views.JPanelWithBackground;
 import views.Preferences;
 import views.Stats;
 /**
@@ -30,7 +28,7 @@ import views.Stats;
  */
 public class BriscaMain extends JFrame{
 	
-	private Background centerPanel;
+	private JPanel centerPanel;
 	private JPanel mainPanel;
 	private JButton newGame, availableGames, howTo, myStats;
 	private static ClientEngine engine = new ClientEngine();
@@ -45,6 +43,7 @@ public class BriscaMain extends JFrame{
 		public ChatWindowListener(ClientEngine engine) {
 			this.engine = engine;
 		}
+		
 		@Override
 		public void windowActivated(WindowEvent e) {}
 
@@ -59,6 +58,7 @@ public class BriscaMain extends JFrame{
 		public void windowClosing(WindowEvent e) {
 			engine.removeUser();
 		}
+		
 		@Override
 		public void windowDeactivated(WindowEvent e) {}
 
@@ -75,9 +75,9 @@ public class BriscaMain extends JFrame{
 		@Override
 		public void windowOpened(WindowEvent e) {
 			ChatPanel.setFocusOnMessageField();
-		}
-		
+		}		
 	}
+
 	/**
 	 * This will create a frame to that will be the welcoming/lobby frame
 	 * @param newUser - receives the new user 
@@ -88,14 +88,12 @@ public class BriscaMain extends JFrame{
 		super("Brisca: "+ newUser);
 		setSize(600,500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null); 						// Set Location to Center of Screen
 		
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		
-		centerPanel = new Background();
+		centerPanel = new JPanelWithBackground("Images/BACK.jpg");
 		centerPanel.setLayout(new GridBagLayout());
 		centerPanel.setOpaque(false);
 		
@@ -134,59 +132,27 @@ public class BriscaMain extends JFrame{
 		mainPanel.add(ch, BorderLayout.EAST);
 		engine.enterRoom(newUser, password);
 		
-		class Listener1 implements ActionListener {
+		class Listener implements ActionListener {
 			private ClientEngine engine;
-			Listener1(ClientEngine engine){
+			Listener(ClientEngine engine){
 				this.engine = engine;
 			}
 			/**
-			 * Method for listening that will check if new user has arrived 
+			 * Method for listening and updating info 
 			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				this.engine.hasNewUserArrived();
+				this.engine.hasNewUserArrived(); 			// Ask if new user has arrived
+				this.engine.hasNewMessageArrived();			// Ask if new message has arrived 
+				this.engine.hasNewMember(); 				// Ask if new member has arrived to the game
+				System.out.println("stupidity");
 			}
 		}
-		Timer t1 = new Timer(1000, new Listener1(engine));
+		Timer t1 = new Timer(1000, new Listener(engine));
 		t1.start();
 		
-		class Listener2 implements ActionListener {
-			private ClientEngine engine;
-			Listener2(ClientEngine engine){
-				this.engine = engine;
-			}
-			/**
-			 * Method for listening that will check if new message has arrived 
-			 */
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-				this.engine.hasNewMessageArrived();			
-			}
-		}
-		Timer t2 = new Timer(1000, new Listener2(engine));
-		t2.start();
-		
-		class Listener3 implements ActionListener {
-			private ClientEngine engine;
-			Listener3(ClientEngine engine){
-				this.engine = engine;
-			}
-			/**
-			 * Method for listening that will check if new member has arrived to the game
-			 */
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-				this.engine.hasNewMember();			
-			}
-		}
-		Timer t3 = new Timer(1000, new Listener3(engine));
-		t3.start();
-		
 		add(mainPanel);
-
 		addWindowListener(new ChatWindowListener(engine));
 		setVisible(true);
 		

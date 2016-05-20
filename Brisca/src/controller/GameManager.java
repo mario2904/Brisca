@@ -5,7 +5,7 @@ import model.Deck;
 import model.Player;
 /**
  * This class creates the game logic 
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class GameManager {

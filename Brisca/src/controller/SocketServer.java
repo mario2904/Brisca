@@ -14,7 +14,7 @@ import model.Player;
  * This class is the server
  * Makes remote connection possible
  * Runs connection between the client
- * @author Michelle M Ortiz & Mario Orbegoso
+ * @author Mario Orbegoso
  *
  */
 public class SocketServer {

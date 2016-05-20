@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import controller.ClientEngine;
+import views.JPanelWithBackground;
 
 /**
  * This class is a frame to show the players their gaming status
@@ -18,15 +19,15 @@ import controller.ClientEngine;
  *
  */
 public class Stats extends JFrame{
-	private Background3 MainPanel;
-	private static JList List;
+	private JPanel MainPanel;
+	private static JList<String> List;
 	private JScrollPane scroll;
 	private Image background;
 	private JPanel UserPanel;
 	private JPanel panel;
 	private JButton button;
 	private ClientEngine engine;
-	private static DefaultListModel listModel;
+	private static DefaultListModel<String> listModel;
 	
 	/**
 	 * Constructor that will draw the frame that will contain the stats
@@ -36,20 +37,19 @@ public class Stats extends JFrame{
 		super("Stats: " + engine.getUser());
 		
 		setSize(400,280);
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		setLocationRelativeTo(null); 						// Set Location to Center of Screen
 		
 		this.engine = engine;
-		MainPanel=new Background3();
+		MainPanel = new JPanelWithBackground("Images/back2.jpg");
 		MainPanel.setLayout(new BorderLayout());
 		super.add(MainPanel);
 	
-		UserPanel= new JPanel();
+		UserPanel = new JPanel();
 		MainPanel.add(UserPanel);
 
 		UserPanel.setOpaque(false);
-		List =new JList();
-		listModel = new DefaultListModel();
+		List =new JList<String>();
+		listModel = new DefaultListModel<String>();
 
 		List.setModel(listModel);
 		scroll = new JScrollPane(List);
@@ -76,6 +76,6 @@ public class Stats extends JFrame{
 	 * Method to clear the gaming status list for it to be updated
 	 */
 	public static void clearStatsList(){
-		listModel = new DefaultListModel();
+		listModel = new DefaultListModel<String>();
 	}
 }

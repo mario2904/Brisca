@@ -124,9 +124,7 @@ public class GameRoom extends JFrame{
 		menu1.add(item2);
 		menu2.add(item3);
 
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-
+		setLocationRelativeTo(null); 						// Set Location to Center of Screen
 		mainPanel = new Background2(this.engine, this);
 		
 		class Listener implements ActionListener {

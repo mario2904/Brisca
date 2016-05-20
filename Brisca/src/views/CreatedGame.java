@@ -20,7 +20,7 @@ import controller.ClientEngine;
  * @author Mario Orbegoso
  */
 public class CreatedGame extends JFrame{
-	private Background3 MainPanel;
+	private JPanel MainPanel;
 	private static JList<String> List;
 	private JScrollPane scroll;
 	private Image background;
@@ -38,11 +38,10 @@ public class CreatedGame extends JFrame{
 		super("Created Game: " + engine.getUser());
 
 		setSize(400,280);
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		setLocationRelativeTo(null); 						// Set Location to Center of Screen
 		
 		this.engine = engine;
-		MainPanel=new Background3();
+		MainPanel=new JPanelWithBackground("Images/back2.jpg");
 		MainPanel.setLayout(new BorderLayout());
 		super.add(MainPanel);
 	

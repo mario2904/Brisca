@@ -22,7 +22,7 @@ import controller.ClientEngine;
  *
  */
 public class AvailableGames extends JFrame{
-	private Background3 MainPanel;
+	private JPanel MainPanel;
 	private static JList<String> List;
 	private JScrollPane scroll;
 	private Image background;
@@ -42,15 +42,14 @@ public class AvailableGames extends JFrame{
 
 		
 		setSize(400,280);
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		setLocationRelativeTo(null); 						// Set Location to Center of Screen
 		
 		this.engine = engine;
-		MainPanel=new Background3();
+		MainPanel = new JPanelWithBackground("Images/back2.jpg");
 		MainPanel.setLayout(new BorderLayout());
 		super.add(MainPanel);
 	
-		UserPanel= new JPanel();
+		UserPanel = new JPanel();
 		MainPanel.add(UserPanel);
 		
 		UserPanel.setOpaque(false);
@@ -106,7 +105,7 @@ public class AvailableGames extends JFrame{
 	}
 	/**
 	 * Listener class for the button used to select the game and join it
-	 * @author  Michelle M Ortiz & Mario Orbegoso
+	 * @author  Mario Orbegoso
 	 *
 	 */
 	public class joinGameListener implements ActionListener{
