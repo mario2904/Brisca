@@ -40,7 +40,6 @@ public class GameManager {
 		indexPlayerFirstTurn = 0;
 		System.out.println("The life is: " + life + "\n");
 		
-		
 	}
 	/**
 	 * Returns the deck of this game

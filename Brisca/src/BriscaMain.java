@@ -20,6 +20,7 @@ import views.HowTo;
 import views.JPanelWithBackground;
 import views.Preferences;
 import views.Stats;
+
 /**
  * This is the main class
  * Once a player has registered he can create a game, view available games, view his playing status and get help info from here
@@ -107,7 +108,6 @@ public class BriscaMain extends JFrame{
 		myStats = new JButton("My Stats");
 		myStats.addActionListener(new MyStatsListener());
 		
-		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.gridy = 0;
@@ -167,6 +167,7 @@ public class BriscaMain extends JFrame{
 			new Preferences(engine);
 		}
 	}	
+	
 	public class availableGamesListener implements ActionListener{
 
 		/**
@@ -180,6 +181,7 @@ public class BriscaMain extends JFrame{
 			engine.newWindowGameList();
 		}
 	}
+	
 	public class HowToListener implements ActionListener{
 		/**
 		 * Method that will check if a user wants to know how to play

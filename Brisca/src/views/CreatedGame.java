@@ -1,8 +1,6 @@
 package views;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,9 +21,7 @@ public class CreatedGame extends JFrame{
 	private JPanel MainPanel;
 	private static JList<String> List;
 	private JScrollPane scroll;
-	private Image background;
 	private JPanel UserPanel;
-	private JPanel panel;
 	private JButton button;
 	private ClientEngine engine;
 	private static DefaultListModel<String> listModel;

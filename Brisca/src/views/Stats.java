@@ -22,10 +22,7 @@ public class Stats extends JFrame{
 	private JPanel MainPanel;
 	private static JList<String> List;
 	private JScrollPane scroll;
-	private Image background;
 	private JPanel UserPanel;
-	private JPanel panel;
-	private JButton button;
 	private ClientEngine engine;
 	private static DefaultListModel<String> listModel;
 	

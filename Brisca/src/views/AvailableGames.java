@@ -1,8 +1,6 @@
 package views;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,9 +23,7 @@ public class AvailableGames extends JFrame{
 	private JPanel MainPanel;
 	private static JList<String> List;
 	private JScrollPane scroll;
-	private Image background;
 	private JPanel UserPanel;
-	private JPanel panel;
 	private JButton button;
 	private ClientEngine engine;
 	private static DefaultListModel<String> listModel;
@@ -59,7 +55,6 @@ public class AvailableGames extends JFrame{
 		List.setModel(listModel);
 		scroll = new JScrollPane(List);
 		UserPanel.add(scroll);
-	
 
 		scroll.setPreferredSize(new Dimension(300, 200));
 		scroll.setLocation(150, 100);
@@ -86,7 +81,6 @@ public class AvailableGames extends JFrame{
 		t1.start();
 		
 		setVisible(true);
-
 		
 	}
 	/**

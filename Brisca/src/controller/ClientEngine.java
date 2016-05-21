@@ -65,7 +65,7 @@ public class ClientEngine {
 		
 		String response = "";
 		do {
-			response = this.sendRequest(server, port, "registerUser?" + username + ";" + password);
+			response = this.sendRequest("registerUser?" + username + ";" + password);
 		}
 		while (!response.contains("userRegistered"));
 
@@ -83,7 +83,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-		response = this.sendRequest(server, port, "newUserRequest");
+		response = this.sendRequest("newUserRequest");
 		}while(!response.contains("newUserResponse"));
 		
 		if (!response.contains("noNewUser")) {
@@ -107,7 +107,7 @@ public class ClientEngine {
 	public void sendMessage(String message) {
 		String response = "";
 		do {
-			response = this.sendRequest(server, port, "sendMessage?" + this.localUser + ";" + (message.replace(" ", "%20%")));
+			response = this.sendRequest("sendMessage?" + this.localUser + ";" + (message.replace(" ", "%20%")));
 		}
 		while (!response.contains("messageReceived"));
 
@@ -121,7 +121,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-		response = this.sendRequest(server, port, "newMessageRequest");
+		response = this.sendRequest("newMessageRequest");
 		}while(!response.contains("newMessageResponse"));
 		
 		if (!response.contains("noNewMessage")) {
@@ -145,7 +145,7 @@ public class ClientEngine {
 	public void createGame(String game){
 		String response = "";
 		do {
-			response = this.sendRequest(server, port, "createGame?" + game +";" + this.localUser);
+			response = this.sendRequest("createGame?" + game +";" + this.localUser);
 		}
 		while (!response.contains("gameCreated"));
 		
@@ -162,7 +162,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-		response = this.sendRequest(server, port, "newGameRequest");
+		response = this.sendRequest("newGameRequest");
 		}while(!response.contains("newGameResponse"));
 		
 		if (!response.contains("noNewGame")) {
@@ -185,7 +185,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-		response = this.sendRequest(server, port, "gameStartedRequest?" + this.currentGame);
+		response = this.sendRequest("gameStartedRequest?" + this.currentGame);
 		}while(!response.contains("gameStartedResponse"));
 		
 		if (!response.contains("gameNotStarted")) {
@@ -205,7 +205,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-		response = this.sendRequest(server, port, "newCurrentRoundInfoRequest?" + this.currentGame);
+		response = this.sendRequest("newCurrentRoundInfoRequest?" + this.currentGame);
 		}while(!response.contains("newCurrentRoundInfoResponse"));
 
 		if (!response.contains("noNewCurrentRoundInfo")) {
@@ -226,7 +226,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-		response = this.sendRequest(server, port, "newMemberRequest?" + this.localGame);
+		response = this.sendRequest("newMemberRequest?" + this.localGame);
 		}while(!response.contains("newMemberResponse"));
 
 		if (!response.contains("noNewMember")) {
@@ -249,7 +249,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-		response = this.sendRequest(server, port,  "newCardRequest?" + this.currentGame + ";" + this.localUser);
+		response = this.sendRequest("newCardRequest?" + this.currentGame + ";" + this.localUser);
 		}while(!response.contains("newCardResponse"));
 		if (!response.contains("noNewCard")) {
 			try{
@@ -273,7 +273,7 @@ public class ClientEngine {
 	public void startGame(){
 		String response = "";
 		do {
-			response = this.sendRequest(server, port, "startGame?" + this.localGame);
+			response = this.sendRequest("startGame?" + this.localGame);
 		}
 		while (!response.contains("gameStarted"));
 	}
@@ -285,7 +285,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-			response = this.sendRequest(server, port,  "winnerOfGameRequest?" + this.currentGame);
+			response = this.sendRequest("winnerOfGameRequest?" + this.currentGame);
 		}while(!response.contains("winnerOfGameResponse")); 
 		
 		System.out.println(response);
@@ -304,7 +304,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-			response = this.sendRequest(server, port, "newWindow");
+			response = this.sendRequest("newWindow");
 		}while(!response.contains("newWindowResponse"));
 		AvailableGames.clearGameList();
 		try{
@@ -321,7 +321,7 @@ public class ClientEngine {
 	public void joinGame(String game){
 		String response = "";
 		do {
-			response = this.sendRequest(server, port, "joinGameRequest?" + game + ";" + this.localUser);
+			response = this.sendRequest("joinGameRequest?" + game + ";" + this.localUser);
 		}
 		while (!response.contains("joinedGame"));
 		this.currentGame = game;
@@ -334,7 +334,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do {
-			response = this.sendRequest(server, port, "chooseCardRequest?" + this.currentGame + ";" + this.localUser + ";" + card);
+			response = this.sendRequest("chooseCardRequest?" + this.currentGame + ";" + this.localUser + ";" + card);
 		}
 		while (!response.contains("cardChosen"));
 		
@@ -348,7 +348,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-		response = this.sendRequest(server, port,  "newCardsChosenRequest?" + this.currentGame);
+		response = this.sendRequest("newCardsChosenRequest?" + this.currentGame);
 		}while(!response.contains("newCardsChosenResponse"));
 		if (!response.contains("noNewCardsChosen")) {
 			System.out.println(response);
@@ -368,7 +368,7 @@ public class ClientEngine {
 		String response = "";
 		
 		do{
-			response = this.sendRequest(server, port, "getStatsRequest?" + this.localUser);
+			response = this.sendRequest("getStatsRequest?" + this.localUser);
 		}while(!response.contains("statsResponse"));
 		Stats.clearStatsList();
 		for (String s: response.split("\\*")[1].split(",")) {
@@ -382,7 +382,7 @@ public class ClientEngine {
 	public void removeUser() {
 		String response = "";
 		do {
-			response = this.sendRequest(server, port, "removeUserRequest?" + this.localUser);
+			response = this.sendRequest("removeUserRequest?" + this.localUser);
 		}
 		while (!response.contains("removalSuccess"));
 		
@@ -402,19 +402,17 @@ public class ClientEngine {
 
 			String response = "";
 			do {
-				response = this.sendRequest(server, port, "removeGameRequest?" + this.localGame);
+				response = this.sendRequest("removeGameRequest?" + this.localGame);
 			}
 			while (!response.contains("removalGameSuccess"));
 		}
 	}
 	/**
-	 * Sends the requests to the server and wait for a response
-	 * @param serverIP
-	 * @param port
+	 * Sends the requests to the server and wait for a responses
 	 * @param parameters
 	 * @return response from server
 	 */
-	private String sendRequest(String serverIP, int port, String parameters)
+	private String sendRequest(String parameters)
 	{
 		try {
 			out.println(parameters);
